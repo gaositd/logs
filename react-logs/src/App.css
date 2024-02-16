@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header{
+  display: flex;
+  justify-content: space-evenly;
+  /* flex-wrap: wrap; */
+}
+
+.textAreaContainer{
+  margin: 0.5rem auto;
+  width: 91%;
+  height: 90vh;
+}
+
+textarea{
+  width: 100%;
+  height: 90%;
+  resize: none;
+}
+
+/*
+Area admin inicio
+*/
+.menu{
+  display: grid;
+  grid-template-columns: 3fr 3fr;
+  width: 60%;
+  margin: 1rem 1rem;
+  font-size: 1.6rem;
+  color: black;
+}
+
+.tableServer{
+  width: 90%;
+  margin: 0% auto;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.titleColumnsServer{
+  background-color: rgb(194, 189, 189);
+}
+
+.captionServer{
+  font-size: 1.6rem;
+  color: rgb(75, 73, 73);
+}
+
+tbody tr td {
+  text-align: center;
+}
+
+.actionsServer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+table tbody tr {
+  background-color: #eee;
+}
+
+table tr:nth-child(2) {
+  background-color: #f3e0e0;
+}
+/*
+Area admin fin
+*/

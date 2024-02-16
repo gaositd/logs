@@ -1,0 +1,24 @@
+{
+  "name": "backso",
+  "version": "0.0.1",
+  "description": "Leer logs de Docker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "default": "start"
+  },
+  "author": "Alvaro Gamez Chavez",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "circular-json": "^0.5.9",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "ssh2": "^1.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
