@@ -1,7 +1,8 @@
 const ssh2 = require("ssh2");
 const {
   ERRORDATA,
-  LOGS
+  LOGS,
+  CONTAINER,
 } = require("../../constants/constants.js");
 
 const config = {
