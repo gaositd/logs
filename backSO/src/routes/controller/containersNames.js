@@ -2,7 +2,7 @@ const ssh2 = require("ssh2");
 const {
   ERRORDATA,
   CONTAINERSNAMES,
-  CONTAINER_ID,
+  CAD_VACIA,
 } = require("../../constants/constants.js");
 
 const config = {
@@ -17,7 +17,7 @@ function getContainersNames(req, res) {
     user,
     password,
   } = req.body;
-
+  
   if (server.length === 0 || user.length === 0 || password.length === 0) {
     console.log(ERRORDATA);
     return res.status(500).json({ msg: ERRORDATA });
@@ -25,6 +25,7 @@ function getContainersNames(req, res) {
 
   try {
     let resultData = "";
+    let namesObj = [];
 
     client
       .on("ready", () => {
@@ -40,32 +41,41 @@ function getContainersNames(req, res) {
 
             stream
               .on("close", () => {
-                let tmp = arrNames.filter(data =>{
-                  return data.includes(CONTAINER_ID);
+                const containerIdRegex = /^(?:[0-9a-fA-F]{2}){1,12}$/;
+                let tmp = [];
+
+                arrNames = resultData.split("\r\n");
+                let filteredNames = arrNames.filter(name => {
+                  tmp = name.split(CAD_VACIA);//divide la posición actual
+
+                  for(let i = 0; i < tmp.length; i++){//recorre el arreglo anterior
+                    if(containerIdRegex.test(tmp[i])){//busca por posición un true
+                      //regresa el valor actual del filtro ver const filteredNames
+                      return name;
+                    }
+                  }
                 });
 
                 arrNames = [];
-                arrNames = tmp;
-                tmp = [];
-                for(let i = 0; arrNames.length; i++){
-                  if(/^[0-9A-F]+$/gi.test(arrNames[i])){
-                    tm password.push(arrNames[i]);
-                  }
-                }
-
+                arrNames = filteredNames;
+                filteredNames = [];
+                
+                arrNames.forEach(names => {
+                  filteredNames = names.split(CAD_VACIA);
+                    namesObj.push({
+                      CONTAINER_ID: filteredNames[0],
+                      name:filteredNames[1],
+                    });
+                });
 
                 return res.json({
-                  resultData,
+                  namesObj,
                   code: 200,
                 });
                 client.end();
               })
               .on("data", (data) => {
-                if(data.toString().length > 10){
-                  arrNames.push(data.toString());
-                  resultData = resultData + data
-                }
-                
+                  resultData = resultData + data;                
               });
 
             // Envía el comando y espera 2 segundos antes de cerrar el stream.
