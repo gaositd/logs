@@ -8,14 +8,14 @@
     },
     {
       "id": "1",
-      "server": "10.1.1.225",
+      "server": "10.1.1.215",
       "name": "Sistema Estatal de Declaraciones",
       "enviroment": "stage",
       "disabled": false
     },
     {
       "id": "2",
-      "server": "10.1.1.134",
+      "server": "10.70.1.14",
       "name": "Instancia para desarrollo",
       "enviroment": "dev",
       "disabled": false
