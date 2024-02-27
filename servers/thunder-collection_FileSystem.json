@@ -1,0 +1,65 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "FileSystem",
+    "dateExported": "2024-02-27T15:42:17.617Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "6be966c5-3c7a-4736-a8c2-d33baf3a932f",
+            "colId": "558c534d-2ff1-4c84-a616-d54431cb9962",
+            "containerId": "",
+            "name": "newServer",
+            "url": "",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-27T15:35:49.973Z",
+            "modified": "2024-02-27T15:36:50.480Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1aee0b98-c3b3-4c7c-8754-b27412267b65",
+            "colId": "558c534d-2ff1-4c84-a616-d54431cb9962",
+            "containerId": "",
+            "name": "UpdateServer",
+            "url": "",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-02-27T15:36:12.783Z",
+            "modified": "2024-02-27T15:36:44.104Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "69815d1b-0d18-467d-9a6b-219e6969ccd5",
+            "colId": "558c534d-2ff1-4c84-a616-d54431cb9962",
+            "containerId": "",
+            "name": "DeleteServer",
+            "url": "",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-02-27T15:37:21.572Z",
+            "modified": "2024-02-27T15:37:27.442Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "73508035-bdc7-4766-b098-f246bc9b460c",
+            "colId": "558c534d-2ff1-4c84-a616-d54431cb9962",
+            "containerId": "",
+            "name": "DeleteFileServers",
+            "url": "",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-02-27T15:37:53.739Z",
+            "modified": "2024-02-27T15:37:58.816Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

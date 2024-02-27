@@ -1,0 +1,100 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Docker Logs",
+    "dateExported": "2024-02-27T15:38:38.479Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "33d25665-d2a7-41c4-b9f8-1beff3e46437",
+            "name": "logs",
+            "containerId": "",
+            "created": "2024-02-06T17:33:59.875Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "6c61b861-c0c1-4182-b4b2-a0fbee21a902",
+            "name": "ContainersName",
+            "containerId": "",
+            "created": "2024-02-06T17:34:26.041Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "79db3dc3-d795-4fa3-98ab-d1a87b0b8dd3",
+            "colId": "fb007554-3e09-4ecf-b2b5-52880ad64edf",
+            "containerId": "6c61b861-c0c1-4182-b4b2-a0fbee21a902",
+            "name": "Get  Containers Names Client",
+            "url": "localhost:3456/getContainersNames",
+            "method": "GET",
+            "sortNum": 5000,
+            "created": "2024-02-06T17:34:48.348Z",
+            "modified": "2024-02-23T17:25:47.149Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"server\":\"10.1.1.215\",\n  \"user\":\"logs\", \n  \"password\": \"logs1029\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a0511907-11eb-4e2a-8c68-a2f769b9f7f3",
+            "colId": "fb007554-3e09-4ecf-b2b5-52880ad64edf",
+            "containerId": "33d25665-d2a7-41c4-b9f8-1beff3e46437",
+            "name": "Get Logs Console",
+            "url": "localhost:4321/getLogs",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-01-25T17:40:40.986Z",
+            "modified": "2024-01-25T22:49:26.428Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"server\":\"10.1.1.215\",\n  \"user\":\"logs\", \n  \"password\": \"logs1029\", \n  \"linesQuantity\": 500, \n  \"dockerContainer\":\"1\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b1a1d3c7-285d-455d-b7ba-7ee9314f9bf1",
+            "colId": "fb007554-3e09-4ecf-b2b5-52880ad64edf",
+            "containerId": "6c61b861-c0c1-4182-b4b2-a0fbee21a902",
+            "name": "Get Containers Names Console",
+            "url": "localhost:4321/getContainersNames",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-06T17:34:35.302Z",
+            "modified": "2024-02-06T17:51:46.364Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"server\":\"10.1.1.215\",\n  \"user\":\"logs\", \n  \"password\": \"logs1029\", \n  \"linesQuantity\": 500, \n  \"dockerContainer\":\"1\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9e741320-fa4a-4c75-b4b7-b6e29c531138",
+            "colId": "fb007554-3e09-4ecf-b2b5-52880ad64edf",
+            "containerId": "33d25665-d2a7-41c4-b9f8-1beff3e46437",
+            "name": "Get Logs Client",
+            "url": "localhost:3456/getLogs",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-01-26T16:02:10.389Z",
+            "modified": "2024-01-26T16:02:46.842Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"server\":\"10.1.1.215\",\n  \"user\":\"logs\", \n  \"password\": \"logs1029\", \n  \"linesQuantity\": 500, \n  \"dockerContainer\":\"1\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
