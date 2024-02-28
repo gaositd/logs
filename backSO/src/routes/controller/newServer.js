@@ -8,6 +8,7 @@ const {
   IP_SERVER_ERROR,
 } = require('../../constants/constants');
 const servers = require(path.join(__dirname, '../../../../','servers/Serverx.json'));
+const serverPath = path.resolve(__dirname, '../../../../','servers/Serverx.json');
 
 const IPRegex = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
 let id;
@@ -33,7 +34,7 @@ const postNewServer = async (req, res) => {
   if(disable === null){
     disable = true;
   }
-
+  console.log(serverPath);
   data ={
     id:`${randomUUID()}`,
     server:`${server}`,
@@ -43,7 +44,7 @@ const postNewServer = async (req, res) => {
 
   try {
     servers.servidores.push(data);
-    fs.writeFileSync(servers, JSON.stringify(data));
+    fs.writeFileSync(serverPath, JSON.stringify(servers));
 
     return res.json({
       data,
