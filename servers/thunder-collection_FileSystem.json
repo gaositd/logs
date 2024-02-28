@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "FileSystem",
-    "dateExported": "2024-02-27T15:42:17.617Z",
+    "dateExported": "2024-02-28T19:04:06.544Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -10,13 +10,18 @@
             "colId": "558c534d-2ff1-4c84-a616-d54431cb9962",
             "containerId": "",
             "name": "newServer",
-            "url": "",
+            "url": "localhost:3456/newserver",
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-02-27T15:35:49.973Z",
-            "modified": "2024-02-27T15:36:50.480Z",
+            "modified": "2024-02-27T19:59:28.685Z",
             "headers": [],
             "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"server\": \"10.70.1.17\",\n  \"enviroment\":\"Micros DEV\",\n  \"disable\":false\n}",
+                "form": []
+            },
             "tests": []
         },
         {
@@ -24,13 +29,18 @@
             "colId": "558c534d-2ff1-4c84-a616-d54431cb9962",
             "containerId": "",
             "name": "UpdateServer",
-            "url": "",
+            "url": "localhost:3456/updateServer",
             "method": "PUT",
             "sortNum": 20000,
             "created": "2024-02-27T15:36:12.783Z",
-            "modified": "2024-02-27T15:36:44.104Z",
+            "modified": "2024-02-28T18:48:33.326Z",
             "headers": [],
             "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\":\"2edf0c43-173b-48e8-8edf-9961911f775b\",\n  \"server\": \"10.70.1.17\",\n  \"enviroment\":\"Micros DEV\"\n}",
+                "form": []
+            },
             "tests": []
         },
         {
@@ -38,27 +48,18 @@
             "colId": "558c534d-2ff1-4c84-a616-d54431cb9962",
             "containerId": "",
             "name": "DeleteServer",
-            "url": "",
+            "url": "localhost:3456/deleteServer",
             "method": "DELETE",
             "sortNum": 30000,
             "created": "2024-02-27T15:37:21.572Z",
-            "modified": "2024-02-27T15:37:27.442Z",
+            "modified": "2024-02-28T17:46:38.989Z",
             "headers": [],
             "params": [],
-            "tests": []
-        },
-        {
-            "_id": "73508035-bdc7-4766-b098-f246bc9b460c",
-            "colId": "558c534d-2ff1-4c84-a616-d54431cb9962",
-            "containerId": "",
-            "name": "DeleteFileServers",
-            "url": "",
-            "method": "DELETE",
-            "sortNum": 40000,
-            "created": "2024-02-27T15:37:53.739Z",
-            "modified": "2024-02-27T15:37:58.816Z",
-            "headers": [],
-            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\":\"037b1244-0f07-4242-bb26-9a576d4f865d\"\n}",
+                "form": []
+            },
             "tests": []
         }
     ]
