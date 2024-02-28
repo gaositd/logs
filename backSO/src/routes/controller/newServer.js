@@ -1,16 +1,19 @@
 const fs = require('fs');
+const { open } = require('fs/promises');
+const path = require('path');
 const { randomUUID } = require('crypto');
 const {
   ERRORDATA,
   SERVER_PATH,
+  IP_SERVER_ERROR,
 } = require('../../constants/constants');
- const servers = require('../../../../servers/Serverx.json');
+const servers = require(path.join(__dirname, '../../../../','servers/Serverx.json'));
 
+const IPRegex = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
 let id;
-let data = [];
+let data = {};
 
-const postNewServer = async (res, req) => {
-  const fileName = 'SERVERS.json';
+const postNewServer = async (req, res) => {
   const {
     server, // IP
     enviroment,
@@ -22,33 +25,29 @@ const postNewServer = async (res, req) => {
     return res.status(500).json({ msg: ERRORDATA });
   }
 
+  if(!IPRegex.test(server)){
+    console.log(IP_SERVER_ERROR,);
+    return res.status(500).json({ msg: IP_SERVER_ERROR, });
+  }
+
   if(disable === null){
     disable = true;
   }
 
-  data = [
-    {
-      id:`${randomUUID()}`,
-      server:`${server}`,
-      enviroment:`${enviroment}`,
-      disable:`${disable}`
-    }
-  ];
+  data ={
+    id:`${randomUUID()}`,
+    server:`${server}`,
+    enviroment:`${enviroment}`,
+    disable:`${disable}`
+  };
 
   try {
-    // await fs.appendFile(`${servers}/${fileName}`, data, (err) => {
-    //   if(err){
-    //     console.log(err);
-    //     return res
-    //     .status(500)
-    //     .json({msg:error});
-    //   }
-    // });
+    servers.servidores.push(data);
+    fs.writeFileSync(servers, JSON.stringify(data));
 
-    await fs.appendFile(`${servers}/${fileName}`, data, {flag: w});
     return res.json({
       data,
-      code:200,
+      status:200,
     });
   } catch (error) {
     console.log(error);
