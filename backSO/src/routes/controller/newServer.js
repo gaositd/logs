@@ -1,10 +1,8 @@
 const fs = require('fs');
-const { open } = require('fs/promises');
 const path = require('path');
 const { randomUUID } = require('crypto');
 const {
   ERRORDATA,
-  SERVER_PATH,
   IP_SERVER_ERROR,
 } = require('../../constants/constants');
 const servers = require(path.join(__dirname, '../../../../','servers/Serverx.json'));
