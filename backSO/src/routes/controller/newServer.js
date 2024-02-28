@@ -9,7 +9,6 @@ const servers = require(path.join(__dirname, '../../../../','servers/Serverx.jso
 const serverPath = path.resolve(__dirname, '../../../../','servers/Serverx.json');
 
 const IPRegex = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-let id;
 let data = {};
 
 const postNewServer = async (req, res) => {
@@ -32,7 +31,7 @@ const postNewServer = async (req, res) => {
   if(disable === null){
     disable = true;
   }
-  console.log(serverPath);
+  
   data ={
     id:`${randomUUID()}`,
     server:`${server}`,
