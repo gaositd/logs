@@ -32,7 +32,7 @@ const putUpdateServer = (req, res) => {
     disable = true;
   }
 
-  const serversUpdate = servers.servidores.map(server => {
+  const serversUpdate = servers.map(server => {
     if(server.id === id){
       server.enviroment = enviroment;
       server.disable = disable;

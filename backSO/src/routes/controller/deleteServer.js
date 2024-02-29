@@ -14,7 +14,7 @@ const deleteServer = async (req, res) => {
     return res.status(500).json({ msg: ERRORDATA });
   }
 
-  const deleteServers = servers.servidores.filter(server => {
+  const deleteServers = servers.filter(server => {
     return server.id !== id
   });
 
