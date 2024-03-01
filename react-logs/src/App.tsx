@@ -7,6 +7,7 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom';
 import { Page } from './page';
 import { Admin } from './components/admin'
+import { NewServer } from "./components/admin/newServer/NewServer";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -16,6 +17,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Page />} />
       <Route path='/admin' element={<Admin />} />
+      <Route path="/admin/newServer" element={<NewServer />} />
       <Route path='*' element={<Page />} />
     </Routes>
     </>

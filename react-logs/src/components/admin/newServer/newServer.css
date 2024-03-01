@@ -1,0 +1,62 @@
+.titulo{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  font-weight: bolder;
+  text-shadow: #558abb 1px 0 10px;
+}
+
+.pincipal{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+  border:1px solid black;
+  border-radius: 15px;
+}
+
+.entradas{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.inputs{
+  margin: 1rem 0;
+  width: 80vw;
+  height: 2rem;
+  border-radius: 10px;
+  box-shadow: none;
+  text-shadow: none;
+  border: none;
+  outline: none;
+  background-color: rgb(208, 212, 216);
+  padding-left: 10px;
+}
+
+.checkBoton{
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.lblHabilitado{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  font-weight: bolder;
+  margin-top: 0.3rem;
+}
+
+.boton{
+  background-color: rgb(208, 212, 216);
+  outline: none;
+  border: none;
+  width: 40%;
+  height: 1.6rem;
+  border-radius: 7px;
+}
+
+.boton:active{
+  background-color: rgb(166, 170, 173);
+}

@@ -40,7 +40,7 @@ const postNewServer = async (req, res) => {
   };
 
   try {
-    servers.push(data);
+    servers.servidores.push(data);
     fs.writeFileSync(serverPath, JSON.stringify(servers));
 
     return res.json({

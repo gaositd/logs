@@ -8,13 +8,14 @@ const serverPath = path.resolve(__dirname, '../../../../','servers/Serverx.json'
 
 const deleteServer = async (req, res) => {
   const { id } = req.body;
+  let deleteServers = {servidores:[]};
 
   if(!id){
     console.log(ERRORDATA);
     return res.status(500).json({ msg: ERRORDATA });
   }
 
-  const deleteServers = servers.filter(server => {
+  deleteServers.servidores = servers.servidores.filter(server => {
     return server.id !== id
   });
 

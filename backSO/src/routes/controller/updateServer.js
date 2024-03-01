@@ -17,6 +17,7 @@ const putUpdateServer = (req, res) => {
     enviroment,
     disable,
   } = req.body;
+  let serversUpdate = {servidores:[]};
 
   if (server.length === 0 || enviroment.length === 0 ) {
     console.log(ERRORDATA);
@@ -32,13 +33,11 @@ const putUpdateServer = (req, res) => {
     disable = true;
   }
 
-  const serversUpdate = servers.map(server => {
-    if(server.id === id){
-      server.enviroment = enviroment;
-      server.disable = disable;
+  servers.servidores.filter(server => {
+    // server.id !== id ? serversUpdate.servidores.push(server) : null;
+    if(server.id !== id){
+      serversUpdate.servidores.push(server);
     }
-
-    return server;
   });
 
   try {

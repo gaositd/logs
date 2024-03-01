@@ -12,7 +12,7 @@ export const Admin = () => {
     <>
       <div className="menu">
         <div>
-          <Link to="/" title="Nuevo Server">
+          <Link to="/admin/newServer" title="Nuevo Server">
             <VscNewFile />
           </Link>
         </div>
