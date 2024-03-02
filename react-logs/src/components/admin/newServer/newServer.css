@@ -19,7 +19,7 @@
 .entradas{
   display: flex;
   flex-direction: column;
-  margin: 1rem 0;
+  /* margin: 1rem 0; */
 }
 
 .inputs{
@@ -59,4 +59,8 @@
 
 .boton:active{
   background-color: rgb(166, 170, 173);
+}
+
+.inputError{
+  border: 1px solid rgb(247, 115, 115);
 }
