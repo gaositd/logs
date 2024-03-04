@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import * as dotenv from 'dotenv';
 import "./newServer.css";
 
 export const NewServer = () => {
@@ -15,12 +16,37 @@ export const NewServer = () => {
     habilitado: false,
   });
 
+  const [isChecked, setIsChecked] = useState(false);
+
+  const back = process.env.BACK_SERVER;
+
   const handleClick = (e) => {
     console.log(e);
   };
 
+  const sendData = (inputs:any) => {
+    const response = fetch(`${back}`, {
+      method: 'POST', 
+      mode: 'cors', 
+      cache: 'no-cache',
+      credentials: 'same-origin', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      redirect: 'follow', 
+      referrerPolicy: 'no-referrer', 
+      body: JSON.stringify(inputs) 
+    });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(errors.ipServer || errors.nameServer || errors.ambiente || inputs.ipServer === "" || inputs.nameServer === "" || inputs.ambiente === ""){
+      alert("Favor de corregir errores econtrados o llenar los campos vacios");
+      return;
+    }
+
+    sendData(inputs);
   };
 
   const handleInputChange = (e) => {
@@ -33,7 +59,8 @@ export const NewServer = () => {
   };
 
   const handleCheckChange = (e) => {
-    console.log(e.target.value);
+    setIsChecked(e.target.checked);
+    inputs.habilitado = isChecked;
   };
 
   const handleBlur = (e) => {
