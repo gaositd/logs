@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import * as dotenv from 'dotenv';
+import { 
+  URL1,
+  NEW_SERVER
+} from "../../../constants/Constants";
 import "./newServer.css";
 
 export const NewServer = () => {
@@ -15,28 +18,32 @@ export const NewServer = () => {
     ambiente: "",
     habilitado: false,
   });
-
+  
   const [isChecked, setIsChecked] = useState(false);
 
-  const back = process.env.BACK_SERVER;
+  const back = NEW_SERVER;
 
   const handleClick = (e) => {
     console.log(e);
   };
 
-  const sendData = (inputs:any) => {
-    const response = fetch(`${back}`, {
-      method: 'POST', 
-      mode: 'cors', 
-      cache: 'no-cache',
-      credentials: 'same-origin', 
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      redirect: 'follow', 
-      referrerPolicy: 'no-referrer', 
-      body: JSON.stringify(inputs) 
-    });
+  async function postData(url = '', data = {}) {
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        mode: 'cors', 
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow', 
+        referrerPolicy: 'no-referrer', 
+        body: JSON.stringify(data) 
+      });
+      return await response.json(); 
+    } catch (errr) {
+      alert(`Error: ${errr.message}`);
+    }
   }
 
   const handleSubmit = (e) => {
@@ -46,7 +53,7 @@ export const NewServer = () => {
       return;
     }
 
-    sendData(inputs);
+    postData(`${URL1}${back}`, inputs);
   };
 
   const handleInputChange = (e) => {
