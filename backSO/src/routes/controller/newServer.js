@@ -17,7 +17,7 @@ const postNewServer = async (req, res) => {
     enviroment,
     disable,
   } = req.body;
-  
+  console.log(res.body);
   if (server.length === 0 || enviroment.length === 0 ) {
     console.log(ERRORDATA);
     return res.status(500).json({ msg: ERRORDATA });

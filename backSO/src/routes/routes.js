@@ -13,3 +13,5 @@ router.post('/newserver', postNewServer);
 router.put('/updateServer', putUpdateServer);
 router.delete('/deleteServer', deleteServer);
 module.exports = router;
+
+

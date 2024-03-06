@@ -18,24 +18,23 @@ export const NewServer = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleSubmit = async (e) =>{
-    const url = `${URL1}${PORT}${NEW_SERVER}`;
     e.preventDefault();
-    
+    console.log(JSON.stringify(inputs));
     try {
-      const res = await fetch(`${url}`,{
+      const res = await fetch(`${URL1}${PORT}${NEW_SERVER}`,{
         method: 'POST',
         mode: 'cors',
         cache:"no-cache",
         headers: {
           "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify(inputs),
       });
       // const data = await res.json();
-      // console.log(data);
+      console.log(await res.json());
     } catch (errr) {
-      console.log(errr.stack);
+      console.log(`${errr} Estatus: res.status`);
     }
   };
 
@@ -129,6 +128,7 @@ export const NewServer = () => {
             className="boton"
             name="boton"
             id="boton"
+            type="submit"
             onClick={handleClick}
           >
             Crear servidor

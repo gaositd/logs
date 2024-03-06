@@ -16,8 +16,7 @@ function App() {
     <>
     <Routes>
       <Route path='/' element={<Page />} />
-      <Route path='/admin' />
-        <Route index element={<Admin />} />
+      <Route path='/admin' element={<Admin />} />
         <Route path="/admin/newServer" element={<NewServer />} />
       <Route path='*' element={<Page />} />
     </Routes>
