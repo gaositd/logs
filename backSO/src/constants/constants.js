@@ -6,6 +6,7 @@ const TAIL = 'logs --tail';
 const CAD_VACIA = '        ';
 
 const IP_SERVER_ERROR = 'Formato incorrecto de la IP, favor de revisar';
+const FOUND_SERVER = 'Servidor encontrado con el nombre :';
 
 module.exports = {
   ERRORDATA,
@@ -14,4 +15,5 @@ module.exports = {
   TAIL,
   CAD_VACIA,
   IP_SERVER_ERROR,
+  FOUND_SERVER,
 };

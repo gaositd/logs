@@ -39,9 +39,9 @@ export const Admin = () => {
           {servidores.map((server: any) => (
             <tr key={server.id}>
               <td scope="col">{server.id}</td>
-              <td scope="col">{server.name}</td>
-              <td scope="col">{server.server}</td>
-              <td scope="col">{server.enviroment}</td>
+              <td scope="col">{server.nameServer}</td>
+              <td scope="col">{server.ipServer}</td>
+              <td scope="col">{server.ambiente}</td>
               <td>
                 <div className="actionsServer">
                   <div>

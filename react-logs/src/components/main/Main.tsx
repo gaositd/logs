@@ -9,6 +9,7 @@ export const Main = () => {
         id="logs" 
         placeholder='Logs del contenedor' 
         aria-placeholder='Logs del contenedor'
+        readOnly
       >
       </textarea>
     </div>

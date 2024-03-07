@@ -4,39 +4,59 @@ const { randomUUID } = require('crypto');
 const {
   ERRORDATA,
   IP_SERVER_ERROR,
+  FOUND_SERVER,
 } = require('../../constants/constants');
 const servers = require(path.join(__dirname, '../../../../','servers/Serverx.json'));
 const serverPath = path.resolve(__dirname, '../../../../','servers/Serverx.json');
+const { findServer } = require('../../finders/find');
 
 const IPRegex = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
 let data = {};
 
 const postNewServer = async (req, res) => {
   const {
-    server, // IP
-    enviroment,
-    disable,
+    ipServer, // IP
+    nameServer,
+    ambiente,
+    habilitado,
   } = req.body;
-  console.log(res.body);
-  if (server.length === 0 || enviroment.length === 0 ) {
+  
+  if (ipServer.length === 0 || ipServer === null || ipServer === undefined ) {
     console.log(ERRORDATA);
     return res.status(500).json({ msg: ERRORDATA });
   }
 
-  if(!IPRegex.test(server)){
+  if (nameServer.length === 0 || nameServer === null || nameServer === undefined ) {
+    console.log(ERRORDATA);
+    return res.status(500).json({ msg: ERRORDATA });
+  }
+
+  if (ambiente.length === 0 || ambiente === null || ambiente === undefined ) {
+    console.log(ERRORDATA);
+    return res.status(500).json({ msg: ERRORDATA });
+  }
+
+  if(!IPRegex.test(ipServer)){
     console.log(IP_SERVER_ERROR,);
     return res.status(500).json({ msg: IP_SERVER_ERROR, });
   }
 
-  if(disable === null){
-    disable = true;
+  if(habilitado === null){
+    habilitado = true;
   }
   
+  const findServers = findServer(ipServer, nameServer, ambiente);
+  if(findServers){
+    console.log(`${FOUND_SERVER} ${findServers}`);
+    return res.status(409).json({ msg: `${FOUND_SERVER} ${findServers}` });
+  }
+
   data ={
     id:`${randomUUID()}`,
-    server:`${server}`,
-    enviroment:`${enviroment}`,
-    disable:`${disable}`
+    ipServer:`${ipServer}`,
+    nameServer:`${nameServer}`,
+    ambiente:`${ambiente}`,
+    habilitado:habilitado
   };
 
   try {

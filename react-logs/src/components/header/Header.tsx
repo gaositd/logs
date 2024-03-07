@@ -18,8 +18,9 @@ export const Header = () => {
   const selectOption = servidores.map((server, i) => {
     const options = {
       value: server.id,
-      label: server.server,
-      isDisabled: server.disabled,
+      label: `${server.nameServer} (${server.ambiente.toUpperCase()})`,
+      isDisabled: server.habilitado,
+      title:server.nameServer,
     };
     return options;
   });
