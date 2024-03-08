@@ -45,12 +45,12 @@ export const Admin = () => {
               <td>
                 <div className="actionsServer">
                   <div>
-                    <Link to="admin" title="Modificar server">
+                    <Link to={`/admin/updateServer/`+server.id} title="Modificar server">
                       <BsPencilSquare />
                     </Link>
                   </div>
                   <div>
-                    <Link to="admin" title="Borrar  Server">
+                    <Link to="/admin/" title="Borrar  Server">
                     <MdDeleteOutline />
                     </Link>
                   </div>
