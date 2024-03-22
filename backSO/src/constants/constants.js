@@ -7,6 +7,7 @@ const CAD_VACIA = '        ';
 
 const IP_SERVER_ERROR = 'Formato incorrecto de la IP, favor de revisar';
 const FOUND_SERVER = 'Servidor encontrado con el nombre :';
+const SEVER_NOT_FOUND = 'Servidor no encontrado';
 
 module.exports = {
   ERRORDATA,
@@ -16,4 +17,5 @@ module.exports = {
   CAD_VACIA,
   IP_SERVER_ERROR,
   FOUND_SERVER,
+  SEVER_NOT_FOUND,
 };

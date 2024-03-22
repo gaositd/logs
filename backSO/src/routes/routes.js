@@ -19,7 +19,7 @@ router.put('/updateServer', putUpdateServer);
 router.delete('/deleteServer', deleteServer);
 router.get('/find/server', findServer);
 router.get('/find/byName', findServerByName);
-router.get('/find/byId', findServerById);
+router.get('/find/:id', findServerById);
 module.exports = router;
 
 

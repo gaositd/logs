@@ -16,8 +16,15 @@ const findServer = (ipServer, nameServer, ambiente) => {//busca todo en todos lo
   return returnNameServer;
 }
 
-const findServerById = (id) => {
-  return servidores.find(server => server.id === id);
+const findServerById = (req, res) => {
+  const { id } = req.params;
+  
+  for (const server of servidores) {
+    if(server.id === id){
+      return res.status(200).json(server);
+    }
+  }
+  return res.status(404).json({ message: 'Server not found' });
 }
 
 const findServerByName = (nameServer) => {

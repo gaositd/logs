@@ -3,36 +3,19 @@ import React,
     useEffect, 
     useState 
   } from "react";
+  import { useParams } from "react-router-dom";
 import { 
   URL1,
   PORT,
   UPDATESERVER,
   FIND_BY_ID,
+  SERVER_NOT_FOUND,
 } from "../../../constants/Constants";
 import "../newServer/newServer.css";
 
-export const UpdateServer = (props) => {
-  const { id } = props;
+export const UpdateServer = () => {
+  const { id } = useParams();
   let servidores = {};
-
-  useEffect(() => {
-    try {
-      const res = fetch(`${URL1}${PORT}${FIND_BY_ID}`,{
-        method: 'GET',
-        mode: 'cors',
-        cache:"no-cache",
-        headers: {
-          "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': '*'
-        },
-        body: JSON.stringify(inputs),
-      });
-      // const data = await res.json();
-      // console.log(await res.json());
-    } catch (errr) {
-      console.log(`${errr} Estatus: res.status`);
-    }
-  },[]);
 
   const [inputs, setInputs] = useState({
     ipServer: "",
@@ -40,8 +23,42 @@ export const UpdateServer = (props) => {
     ambiente: "",
     habilitado: false,
   });
+  
   const [errors, setErrors] = useState({});
   const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    console.log(`${URL1}${PORT}${FIND_BY_ID}${id}`);
+    
+      const asyncCall = async () => {
+        await fetch(`${URL1}${PORT}${FIND_BY_ID}${id}`)
+          .then(response => response.json())
+          .then(data => {
+
+            data.hasOwnProperty('message') ? alert(data.message) : null;
+            servidores = data;
+            setInputs({
+              ipServer: servidores.ipServer,
+              nameServer: servidores.nameServer,
+              ambiente: servidores.ambiente,
+              habilitado: servidores.habilitado,
+            });
+            return;
+          })
+          .catch(errr => {
+            console.log(errr);
+            return;
+          });
+        console.log("servidores");
+        console.log(servidores);
+        console.log("inputs");
+        console.log(inputs);
+        return;
+      };
+      
+      asyncCall()
+    
+  },[id]);
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
@@ -157,7 +174,7 @@ export const UpdateServer = (props) => {
             type="submit"
             onClick={handleClick}
           >
-            Crear servidor
+            Modificar servidor
           </button>
         </div>
       </div>
