@@ -8,8 +8,7 @@ import {
   URL1,
   PORT,
   UPDATESERVER,
-  FIND_BY_ID,
-  SERVER_NOT_FOUND,
+  FIND_BY_ID
 } from "../../../constants/Constants";
 import "../newServer/newServer.css";
 
@@ -49,8 +48,6 @@ export const UpdateServer = () => {
             console.log(errr);
             return;
           });
-        console.log("servidores");
-        console.log(servidores);
         console.log("inputs");
         console.log(inputs);
         return;
@@ -65,7 +62,7 @@ export const UpdateServer = () => {
     
     try {
       const res = await fetch(`${URL1}${PORT}${UPDATESERVER}`,{
-        method: 'UPDATE',
+        method: 'PUT',
         mode: 'cors',
         cache:"no-cache",
         headers: {
@@ -74,7 +71,6 @@ export const UpdateServer = () => {
         },
         body: JSON.stringify(inputs),
       });
-      // const data = await res.json();
       console.log(await res.json());
     } catch (errr) {
       console.log(`${errr} Estatus: res.status`);
@@ -110,9 +106,14 @@ export const UpdateServer = () => {
     const {name, value} = e.target;
     setInputs({
       ...inputs,
-      [name]:value,
-      habilitado: e.target.checked,
+      [name]:value
     });
+    e.target.name === 'habilitado' 
+      ? setInputs({
+        ...inputs,
+        habilitado: e.target.checked
+      })
+      : null;
   };
   
   const handleBlur = (e) => {
@@ -164,7 +165,8 @@ export const UpdateServer = () => {
               className="habilitado"
               name="habilitado"
               id="habilitado"
-              onChange={() => setIsChecked(!isChecked)}
+              checked={inputs.habilitado}
+              onChange={handleInputChange}/*{() => setIsChecked(!isChecked)}*/
             />
           </label>
           <button

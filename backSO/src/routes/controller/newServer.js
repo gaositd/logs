@@ -22,22 +22,18 @@ const postNewServer = async (req, res) => {
   } = req.body;
   
   if (ipServer.length === 0 || ipServer === null || ipServer === undefined ) {
-    console.log(ERRORDATA);
     return res.status(500).json({ msg: ERRORDATA });
   }
 
   if (nameServer.length === 0 || nameServer === null || nameServer === undefined ) {
-    console.log(ERRORDATA);
     return res.status(500).json({ msg: ERRORDATA });
   }
 
   if (ambiente.length === 0 || ambiente === null || ambiente === undefined ) {
-    console.log(ERRORDATA);
     return res.status(500).json({ msg: ERRORDATA });
   }
 
   if(!IPRegex.test(ipServer)){
-    console.log(IP_SERVER_ERROR,);
     return res.status(500).json({ msg: IP_SERVER_ERROR, });
   }
 
@@ -47,7 +43,6 @@ const postNewServer = async (req, res) => {
   
   const findServers = findServer(ipServer, nameServer, ambiente);
   if(findServers){
-    console.log(`${FOUND_SERVER} ${findServers}`);
     return res.status(409).json({ msg: `${FOUND_SERVER} ${findServers}` });
   }
 

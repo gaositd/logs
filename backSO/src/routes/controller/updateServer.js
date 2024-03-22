@@ -20,12 +20,10 @@ const putUpdateServer = (req, res) => {
   let serversUpdate = {servidores:[]};
 
   if (server.length === 0 || enviroment.length === 0 ) {
-    console.log(ERRORDATA);
     return res.status(500).json({ msg: ERRORDATA });
   }
 
   if(!IPRegex.test(server)){
-    console.log(IP_SERVER_ERROR,);
     return res.status(500).json({ msg: IP_SERVER_ERROR, });
   }
 
@@ -34,8 +32,9 @@ const putUpdateServer = (req, res) => {
   }
 
   servers.servidores.filter(server => {
-    // server.id !== id ? serversUpdate.servidores.push(server) : null;
+    const { habilitado } = serversUpdate.servidores;
     if(server.id !== id){
+      serversUpdate.servidores.habilitado = !habilitado;
       serversUpdate.servidores.push(server);
     }
   });

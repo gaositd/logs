@@ -19,7 +19,7 @@ export const NewServer = () => {
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
-    console.log(JSON.stringify(inputs));
+    
     try {
       const res = await fetch(`${URL1}${PORT}${NEW_SERVER}`,{
         method: 'POST',
@@ -31,8 +31,6 @@ export const NewServer = () => {
         },
         body: JSON.stringify(inputs),
       });
-      // const data = await res.json();
-      console.log(await res.json());
     } catch (errr) {
       console.log(`${errr} Estatus: res.status`);
     }
@@ -67,9 +65,14 @@ export const NewServer = () => {
     const {name, value} = e.target;
     setInputs({
       ...inputs,
-      [name]:value,
-      habilitado: e.target.checked,
+      [name]:value
     });
+    e.target.name === 'habilitado' 
+      ? setInputs({
+        ...inputs,
+        habilitado: e.target.checked
+      })
+      : null;
   };
   
   const handleBlur = (e) => {
@@ -121,6 +124,7 @@ export const NewServer = () => {
               className="habilitado"
               name="habilitado"
               id="habilitado"
+              checked={inputs.habilitado}
               onChange={() => setIsChecked(!isChecked)}
             />
           </label>
