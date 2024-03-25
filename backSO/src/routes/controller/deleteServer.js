@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { writeFile } = require('fs/promises');
 const path = require('path');
 const {
   ERRORDATA,
@@ -16,18 +17,28 @@ const deleteServer = async (req, res) => {
   }
 
   deleteServers.servidores = servers.servidores.filter(server => server.id !== id);
+  servers.servidores = [];
+  servers.servidores = deleteServers.servidores;
 
+  // try {
+  //   fs.writeFileSync(serverPath, JSON.stringify(deleteServers));
+  //   return res.json({
+  //     deleteServers,
+  //     status:200,
+  //   });
+  // } catch (error) {
+  //   console.log(error);
+  //   return res
+  //     .status(500)
+  //     .json({msg:error});
+  // }
   try {
-    fs.writeFileSync(serverPath, JSON.stringify(deleteServers));
-    return res.json({
-      deleteServers,
-      status:200,
-    });
+    await writeFile(serverPath, JSON.stringify(deleteServers));
+    return res.json({deleteServer, status:200});
   } catch (error) {
-    console.log(error);
     return res
       .status(500)
-      .json({msg:error});
+      .json({msg:error.message});
   }
 
 };

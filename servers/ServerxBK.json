@@ -1,24 +1,31 @@
 {
   "servidores": [
     {
-      "id": 0,
-      "server": "Servidor",
-      "enviroment":"none",
-      "disabled": true
+      "id": "0",
+      "nameServer": "Servidor",
+      "ambiente":"none",
+      "habilitado": true
     },
     {
       "id": "1",
-      "server": "10.1.1.215",
-      "name": "Sistema Estatal de Declaraciones",
-      "enviroment": "stage",
-      "disabled": false
+      "ipServer": "10.1.1.215",
+      "nameServer": "Sistema Estatal de Declaraciones",
+      "ambiente": "stage",
+      "habilitado": false
     },
     {
       "id": "2",
-      "server": "10.70.1.14",
-      "name": "Instancia para desarrollo",
-      "enviroment": "dev",
-      "disabled": false
+      "ipServer": "10.70.1.14",
+      "nameServer": "Instancia para desarrollo",
+      "ambiente": "dev",
+      "habilitado": false
+    },
+    {
+      "id": "e1234783-832b-4a07-baad-028ed488a47d",
+      "ipServer": "192.168.1.1",
+      "nameServer": "nuevo",
+      "ambiente": "test",
+      "habilitado": false
     }
   ]
 }
