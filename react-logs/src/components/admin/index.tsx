@@ -1,12 +1,14 @@
 import 
-  React,
-  { useEffect }
-from "react";
-import { Link } from "react-router-dom";
-import { VscNewFile } from "react-icons/vsc";
-import { BsPencilSquare } from "react-icons/bs";
-import { MdDeleteOutline } from "react-icons/md";
-import { FaArrowLeft } from "react-icons/fa";
+  React
+from 'react';
+import { 
+  Link,
+  useNavigate
+ } from 'react-router-dom';
+import { VscNewFile } from 'react-icons/vsc';
+import { BsPencilSquare } from 'react-icons/bs';
+import { MdDeleteOutline } from 'react-icons/md';
+import { FaArrowLeft } from 'react-icons/fa';
 
 import {
   URL1,
@@ -14,71 +16,71 @@ import {
   DELETE_SERVER
 } from '../../constants/Constants';
 
-import { servidores } from "../../../../servers/Serverx.json";
+import { servidores } from '../../../../servers/Serverx.json';
 
 export const Admin = () => {
-  useEffect(()=>{
+  const navigate = useNavigate();
 
-  }, [servidores]);
+  const handleDeleteClick = async (id:string) => {
+    const response = await fetch(`${URL1}${PORT}${DELETE_SERVER}${id}`,{
+      method: 'DELETE'
+    });
 
-  const deleteServer = async (id:string) => {
-    await fetch();
+    if(response.ok){
+      navigate('/admin')
+    }else{
+      alert("Falla al borrar servidor, dar aviso a admon sistemas");
+      return;
+    }
   };
 
-  const handleDeleteClick = (e:any, id:string) => {
-    console.log(id);
-    console.log(e);
-    e.preventDefault();
-    deleteServer(id)
-    
-  };
-  
   return (
     <>
-      <div className="menu">
+      <div className='menu'>
         <div>
-          <Link to="/admin/newServer" title="Nuevo Server">
+          <Link to='/admin/newServer' title='Nuevo Server'>
             <VscNewFile />
           </Link>
         </div>
         <div>
-          <Link to="/" title="Página principal">
+          <Link to='/' title='Página principal'>
           <FaArrowLeft />
           </Link>
         </div>
       </div>
-      <table className="tableServer">
+      <table className='tableServer'>
         <caption>
-          <span className="captionServer">Servidores a modificar</span>
+          <span className='captionServer'>Servidores a modificar</span>
         </caption>
-        <thead className="titleColumnsServer">
+        <thead className='titleColumnsServer'>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">IP</th>
-            <th scope="col">Ambiente</th>
-            <th scope="col">Acciones</th>
+            <th scope='col'>ID</th>
+            <th scope='col'>Nombre</th>
+            <th scope='col'>IP</th>
+            <th scope='col'>Ambiente</th>
+            <th scope='col'>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {servidores.map((server: any) => (
             <tr key={server.id}>
-              <td scope="col">{server.id}</td>
-              <td scope="col">{server.nameServer}</td>
-              <td scope="col">{server.ipServer}</td>
-              <td scope="col">{server.ambiente}</td>
+              <td scope='col'>{server.id}</td>
+              <td scope='col'>{server.nameServer}</td>
+              <td scope='col'>{server.ipServer}</td>
+              <td scope='col'>{server.ambiente}</td>
               <td>
-                <div className="actionsServer">
+                <div className='actionsServer'>
                   <div>
-                    <Link to={`/admin/updateServer/`+server.id} title="Modificar server">
+                    <Link to={`/admin/updateServer/`+server.id} title='Modificar server'>
                       <BsPencilSquare />
                     </Link>
                   </div>
                   <div>
                     <Link 
                       to='#'
-                      title="Borrar  Server"
-                      onClick={() => handleDeleteClick(event, server.id)}
+                      title='Borrar  Server'
+                      onClick={() => handleDeleteClick(server.id)}
+                      title={`${server.id}`}
                     >
                     <MdDeleteOutline />
                     </Link>
@@ -88,13 +90,13 @@ export const Admin = () => {
             </tr>
           ))}
         </tbody>
-        <tfoot className="titleColumnsServer">
+        <tfoot className='titleColumnsServer'>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">IP</th>
-            <th scope="col">Ambiente</th>
-            <th scope="col">Acciones</th>
+            <th scope='col'>ID</th>
+            <th scope='col'>Nombre</th>
+            <th scope='col'>IP</th>
+            <th scope='col'>Ambiente</th>
+            <th scope='col'>Acciones</th>
           </tr>
         </tfoot>
       </table>
