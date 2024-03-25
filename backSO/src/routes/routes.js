@@ -16,7 +16,7 @@ router.get('/getLogs', getLogDocker);
 router.get('/getContainersNames', getContainersNames);
 router.post('/newserver', postNewServer);
 router.put('/updateServer', putUpdateServer);
-router.delete('/deleteServer', deleteServer);
+router.delete('/deleteServer/:id', deleteServer);
 router.get('/find/server', findServer);
 router.get('/find/byName', findServerByName);
 router.get('/find/:id', findServerById);

@@ -50,7 +50,7 @@ export const Admin = () => {
                     </Link>
                   </div>
                   <div>
-                    <Link to="/admin/" title="Borrar  Server">
+                    <Link to={`/admin/deleteServer/${server.id}`} title="Borrar  Server">
                     <MdDeleteOutline />
                     </Link>
                   </div>

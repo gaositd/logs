@@ -7,7 +7,7 @@ const servers = require(path.join(__dirname, '../../../../','servers/Serverx.jso
 const serverPath = path.resolve(__dirname, '../../../../','servers/Serverx.json');
 
 const deleteServer = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   let deleteServers = {servidores:[]};
 
   if(!id){
@@ -15,9 +15,7 @@ const deleteServer = async (req, res) => {
     return res.status(500).json({ msg: ERRORDATA });
   }
 
-  deleteServers.servidores = servers.servidores.filter(server => {
-    return server.id !== id
-  });
+  deleteServers.servidores = servers.servidores.filter(server => server.id !== id);
 
   try {
     fs.writeFileSync(serverPath, JSON.stringify(deleteServers));
