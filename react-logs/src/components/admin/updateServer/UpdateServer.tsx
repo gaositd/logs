@@ -24,10 +24,9 @@ export const UpdateServer = () => {
   });
   
   const [errors, setErrors] = useState({});
-  const [isChecked, setIsChecked] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
-    console.log(`${URL1}${PORT}${FIND_BY_ID}${id}`);
     
       const asyncCall = async () => {
         await fetch(`${URL1}${PORT}${FIND_BY_ID}${id}`)

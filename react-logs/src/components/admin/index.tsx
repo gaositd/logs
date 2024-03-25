@@ -1,13 +1,38 @@
-import React from "react";
+import 
+  React,
+  { useEffect }
+from "react";
 import { Link } from "react-router-dom";
 import { VscNewFile } from "react-icons/vsc";
 import { BsPencilSquare } from "react-icons/bs";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaArrowLeft } from "react-icons/fa";
 
+import {
+  URL1,
+  PORT,
+  DELETE_SERVER
+} from '../../constants/Constants';
+
 import { servidores } from "../../../../servers/Serverx.json";
 
 export const Admin = () => {
+  useEffect(()=>{
+
+  }, [servidores]);
+
+  const deleteServer = async (id:string) => {
+    await fetch();
+  };
+
+  const handleDeleteClick = (e:any, id:string) => {
+    console.log(id);
+    console.log(e);
+    e.preventDefault();
+    deleteServer(id)
+    
+  };
+  
   return (
     <>
       <div className="menu">
@@ -50,7 +75,11 @@ export const Admin = () => {
                     </Link>
                   </div>
                   <div>
-                    <Link to={`/admin/deleteServer/${server.id}`} title="Borrar  Server">
+                    <Link 
+                      to='#'
+                      title="Borrar  Server"
+                      onClick={() => handleDeleteClick(event, server.id)}
+                    >
                     <MdDeleteOutline />
                     </Link>
                   </div>
