@@ -98,12 +98,6 @@ export const Header = () => {
               selectedRef.current = selected; // Update the ref value
               getLogs(selected);
             }}
-            // onMenuClose={() => {
-            //   if (selectedRef.current) { // Access the ref value correctly
-            //     setSelectedContainer(selectedRef.current);
-            //     console.log(selectedRef.current);
-            //   }
-            // }}
           />
           <Link to="admin">
             {" "}

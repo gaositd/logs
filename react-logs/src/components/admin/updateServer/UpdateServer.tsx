@@ -47,8 +47,6 @@ export const UpdateServer = () => {
             console.log(errr);
             return;
           });
-        console.log('inputs');
-        console.log(inputs);
         return;
       };
       
@@ -70,7 +68,6 @@ export const UpdateServer = () => {
         },
         body: JSON.stringify(inputs),
       });
-      console.log(await res.json());
     } catch (errr) {
       console.log(`${errr} Estatus: res.status`);
     }
