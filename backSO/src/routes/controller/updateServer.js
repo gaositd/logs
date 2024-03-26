@@ -13,21 +13,22 @@ const IPRegex = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0
 const putUpdateServer = (req, res) => {
   let {
     id,
-    server,
-    enviroment,
-    disable,
+    nameServer,
+    ipServer,
+    ambiente,
+    habilitado,
   } = req.body;
   let serversUpdate = {servidores:[]};
 
-  if (server.length === 0 || enviroment.length === 0 ) {
+  if (nameServer.length === 0 || nameServer.length === 0 ) {
     return res.status(500).json({ msg: ERRORDATA });
   }
 
-  if(!IPRegex.test(server)){
+  if(!IPRegex.test(ipServer)){
     return res.status(500).json({ msg: IP_SERVER_ERROR, });
   }
 
-  if(disable === null || disable === undefined){
+  if(habilitado === null || habilitado === undefined){
     disable = true;
   }
 

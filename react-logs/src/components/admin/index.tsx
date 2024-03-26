@@ -80,7 +80,6 @@ export const Admin = () => {
                       to='#'
                       title='Borrar  Server'
                       onClick={() => handleDeleteClick(server.id)}
-                      title={`${server.id}`}
                     >
                     <MdDeleteOutline />
                     </Link>

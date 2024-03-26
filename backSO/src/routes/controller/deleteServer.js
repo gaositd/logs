@@ -12,26 +12,13 @@ const deleteServer = async (req, res) => {
   let deleteServers = {servidores:[]};
 
   if(!id){
-    console.log(ERRORDATA);
     return res.status(500).json({ msg: ERRORDATA });
   }
 
   deleteServers.servidores = servers.servidores.filter(server => server.id !== id);
   servers.servidores = [];
   servers.servidores = deleteServers.servidores;
-
-  // try {
-  //   fs.writeFileSync(serverPath, JSON.stringify(deleteServers));
-  //   return res.json({
-  //     deleteServers,
-  //     status:200,
-  //   });
-  // } catch (error) {
-  //   console.log(error);
-  //   return res
-  //     .status(500)
-  //     .json({msg:error});
-  // }
+  
   try {
     await writeFile(serverPath, JSON.stringify(deleteServers));
     return res.json({deleteServer, status:200});

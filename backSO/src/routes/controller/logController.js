@@ -20,8 +20,6 @@ function getLogDocker(req, res) {//obtiene los logs de docker
   } = req.body;
 
   if ( server.length === 0 || user.length === 0 || password.length === 0 || linesQuantity.length === 0 || dockerContainer.length == 0 ) {
-    console.log(ERRORDATA);
-
     return res.status(500).json({ msg: ERRORDATA });
   }
 

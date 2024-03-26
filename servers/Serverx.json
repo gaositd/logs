@@ -1,1 +1,1 @@
-{"servidores":[{"id":"e1234783-832b-4a07-baad-028ed488a47d","ipServer":"192.168.1.1","nameServer":"nuevo","ambiente":"test","habilitado":false}]}
+{"servidores":[{"id":"e1234783-832b-4a07-baad-028ed488a47d","ipServer":"192.168.1.1","nameServer":"nuevo","ambiente":"test","habilitado":false},{"id":"0ab4902c-0f99-42be-9e60-6373cd94d7c4","ipServer":"10.1.1.120","nameServer":"Micros","ambiente":"Stage","habilitado":false}]}

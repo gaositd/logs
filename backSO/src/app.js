@@ -20,8 +20,7 @@ for(net in netInterfaces){//obtiene la IP del servidor (tarjeta de red física)
       flag = true
       break;
     }
-    if(ipServer === interface.address) { 
-      console.log(ipServer);
+    if(ipServer === interface.address) {
       break;
     };
   }

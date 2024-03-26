@@ -3,7 +3,10 @@ import React,
     useEffect, 
     useState 
   } from 'react';
-  import { useParams } from 'react-router-dom';
+  import {
+    useParams,
+    useNavigate
+  } from 'react-router-dom';
 import { 
   URL1,
   PORT,
@@ -17,6 +20,7 @@ export const UpdateServer = () => {
   let servidores = {};
 
   const [inputs, setInputs] = useState({
+    id:'',
     ipServer: '',
     nameServer: '',
     ambiente: '',
@@ -24,7 +28,7 @@ export const UpdateServer = () => {
   });
   
   const [errors, setErrors] = useState({});
-  // const [isChecked, setIsChecked] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     
@@ -36,12 +40,13 @@ export const UpdateServer = () => {
             data.hasOwnProperty('message') ? alert(data.message) : null;
             servidores = data;
             setInputs({
+              id: servidores.id,
               ipServer: servidores.ipServer,
               nameServer: servidores.nameServer,
               ambiente: servidores.ambiente,
               habilitado: servidores.habilitado,
             });
-            return;
+            navigate('/admin');
           })
           .catch(errr => {
             console.log(errr);

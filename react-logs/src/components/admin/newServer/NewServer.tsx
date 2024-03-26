@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { 
   URL1,
   PORT,
@@ -16,6 +17,7 @@ export const NewServer = () => {
   });
   const [errors, setErrors] = useState({});
   const [isChecked, setIsChecked] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
@@ -31,6 +33,7 @@ export const NewServer = () => {
         },
         body: JSON.stringify(inputs),
       });
+      navigate('/');
     } catch (errr) {
       console.log(`${errr} Estatus: res.status`);
     }
@@ -125,7 +128,7 @@ export const NewServer = () => {
               name="habilitado"
               id="habilitado"
               checked={inputs.habilitado}
-              onChange={() => setIsChecked(!isChecked)}
+              onChange={handleInputChange}
             />
           </label>
           <button
