@@ -13,7 +13,7 @@ const {
 const router = Router();
 
 router.get('/getLogs', getLogDocker);
-router.get('/getContainersNames', getContainersNames);
+router.post('/getContainersNames', getContainersNames);
 router.post('/newserver', postNewServer);
 router.put('/updateServer', putUpdateServer);
 router.delete('/deleteServer/:id', deleteServer);

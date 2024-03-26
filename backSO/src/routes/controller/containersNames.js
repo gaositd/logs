@@ -13,12 +13,12 @@ let arrNames = [];
 
 function getContainersNames(req, res) {
   const {
-    server, // IP
-    user,
+    ipServer, // IP
+    userName,
     password,
   } = req.body;
   
-  if (server.length === 0 || user.length === 0 || password.length === 0) {
+  if (ipServer.length === 0 || userName.length === 0 || password.length === 0) {
     console.log(ERRORDATA);
     return res.status(500).json({ msg: ERRORDATA });
   }
@@ -85,9 +85,9 @@ function getContainersNames(req, res) {
         );
       })
       .connect({
-        host: server,
+        host: ipServer,
         port: process.env.REMOTEPORT,
-        username: user,
+        username: userName,
         password: password,
       });
   } catch (error) {

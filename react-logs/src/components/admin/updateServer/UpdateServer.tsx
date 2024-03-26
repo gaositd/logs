@@ -74,7 +74,7 @@ export const UpdateServer = () => {
         body: JSON.stringify(inputs),
       });
     } catch (errr) {
-      console.log(`${errr} Estatus: res.status`);
+      alert(errr.message);
     }
   };
 

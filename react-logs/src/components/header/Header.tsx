@@ -1,12 +1,16 @@
 import React, {
   useState,
-  useRef,
-  useEffect,
+  useRef
  } from "react";
 import { Link } from "react-router-dom";
 import Select from "react-select";
 import { servidores } from "../../../../servers/Serverx.json";
 import { GrUserAdmin } from "react-icons/gr";
+import {
+  URL1,
+  PORT,
+  CONTAINER_NAME
+} from '../../constants/Constants';
 
 export const Header = () => {
   const [usrPassactive, setUsrPassActive] = useState(true);
@@ -15,6 +19,7 @@ export const Header = () => {
   const selectedRef = useRef(null); 
   // const serverLoad =() useEffect;
 
+  
   const selectOption = servidores.map((server, i) => {
     const options = {
       value: server.id,
@@ -24,30 +29,58 @@ export const Header = () => {
     };
     return options;
   });
-
-  const containers = [
-    { value: 0, label: "Contenedor", isDisabled: true },
-    { value: 1, label: "Docker 1", isDisabled: false },
-    { value: 2, label: "Docker 2", isDisabled: false },
-    { value: 3, label: "Docker 3", isDisabled: false },
-    { value: 4, label: "Docker 4", isDisabled: false },
-  ];
   
-  const getLogs = () => {
-    console.log(selected);
-  };
+  let containers = [];
+  const [inputs, setInputs] = useState({});
 
-  const optionSelected = (e) =>
-    usrPassactive === true ? setUsrPassActive(!usrPassactive) : null;
-
-  const enableNLines = (usrPassactive) => {
-    if(usrPassactive === false){
-      setNLines(!nLines);
-    }
+  const handleFocus = (e) => {
 
   }
 
-  let selected = "";
+  const optionSelected = (e) => {
+    const { usrPassactive } = e.target.outerText;
+    usrPassactive === true ? setUsrPassActive(!usrPassactive) : null;
+    handleChange(e);
+  };
+
+  const handleBlur = (e, usrPassactive) => {
+    if(usrPassactive === false){
+      setNLines(!nLines);
+    }
+    // asyncCall();
+    // fillInputs(e);
+  }
+
+  const handleChange  = (e) => {
+    const name = e.target.name ? e.target.name : e.target.id;
+    const value = e.target.value ? e.target.value : e.target.outerText;
+    setInputs({
+      ...inputs,
+      [name]:value
+    });
+  };
+
+  const asyncCall = async () => {
+    try {
+      const response = await fetch(`${URL1}${PORT}${CONTAINER_NAME}`,{
+        method:'POST',
+        mode:'cors',
+        cache: 'no-cache',
+        headers:{
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        },
+        body:JSON.stringify(inputs),
+      });
+
+      const containersName = response.json();
+      containers = containersName.map(name => name);
+    } catch (errr) {
+      alert(errr.message);
+    }
+  }
+
+  // let selected = "";
 
   return (
     <div>
@@ -55,9 +88,9 @@ export const Header = () => {
         <div className="header">
           <Select
             options={selectOption}
-            onChange={() => optionSelected(event?.target.outerText)}
-            name="IP"
-            id="IP"
+            onChange={() => optionSelected(event)}
+            name="ipServer"
+            id="ipServer"
           />
           <input
             type="text"
@@ -67,6 +100,9 @@ export const Header = () => {
             aria-placeholder="usuario"
             required
             aria-required
+            value={inputs.user}
+            onChange={handleChange}
+            onBlur={() => handleBlur(event, '')}
             readOnly={usrPassactive}
           />
           <input
@@ -77,8 +113,10 @@ export const Header = () => {
             aria-placeholder="Password"
             required
             aria-required
+            onFocus={handleFocus}
             readOnly={usrPassactive}
-            onBlur={() => enableNLines(usrPassactive)}
+            onBlur={() => handleBlur(event,usrPassactive)}
+            value={inputs.password}
           />
           <input
             type="number"
@@ -87,6 +125,8 @@ export const Header = () => {
             min={0}
             placeholder="ver N número de líneas"
             readOnly={nLines}
+            onFocus={asyncCall}
+            value={inputs.number}
           />
           <Select
             options={containers}

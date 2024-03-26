@@ -5,3 +5,5 @@ export const NEW_SERVER = '/newserver';
 export const UPDATESERVER = '/updateServer';
 export const DELETE_SERVER = '/deleteServer/'
 export const FIND_BY_ID = '/find/';
+
+export const CONTAINER_NAME = '/getContainersNames'
